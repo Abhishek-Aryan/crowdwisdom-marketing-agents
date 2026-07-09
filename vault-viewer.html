@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrowdWisdomTrading Vault — Obsidian View</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1e1e1e; color: #dcddde; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; height: 100vh; }
+
+/* SIDEBAR */
+.sidebar { width: 280px; background: #252526; border-right: 1px solid #3c3c3c; overflow-y: auto; padding: 16px 0; }
+.sidebar .vault-name { padding: 0 16px 12px; font-size: 14px; font-weight: 600; color: #8b5cf6; border-bottom: 1px solid #3c3c3c; margin-bottom: 8px; }
+.sidebar .file { padding: 8px 16px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 8px; transition: background 0.15s; }
+.sidebar .file:hover { background: #2d2d2d; }
+.sidebar .file.active { background: #37373d; color: #fff; }
+.sidebar .file .icon { font-size: 14px; }
+.sidebar .file .name { flex: 1; }
+.sidebar .file .size { font-size: 11px; color: #666; }
+
+/* CONTENT */
+.content { flex: 1; overflow-y: auto; padding: 40px 60px; max-width: 900px; }
+.content h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.content h2 { font-size: 22px; font-weight: 600; color: #e0e0e0; margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid #3c3c3c; }
+.content h3 { font-size: 18px; font-weight: 600; color: #d0d0d0; margin: 20px 0 8px; }
+.content p { font-size: 14px; line-height: 1.7; color: #b0b0b0; margin-bottom: 12px; }
+.content table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+.content th { background: #2d2d2d; padding: 8px 12px; text-align: left; font-weight: 600; color: #e0e0e0; border: 1px solid #3c3c3c; }
+.content td { padding: 8px 12px; border: 1px solid #3c3c3c; color: #b0b0b0; }
+.content tr:hover td { background: #2d2d2d; }
+.content blockquote { border-left: 3px solid #8b5cf6; padding: 12px 16px; margin: 12px 0; background: #2d2d2d; border-radius: 0 4px 4px 0; font-size: 13px; color: #a0a0a0; }
+.content code { background: #2d2d2d; padding: 2px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e06c75; }
+.content strong { color: #e0e0e0; }
+.content a { color: #8b5cf6; text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.content hr { border: none; border-top: 1px solid #3c3c3c; margin: 24px 0; }
+.content ul, .content ol { margin: 8px 0 12px 20px; font-size: 14px; line-height: 1.8; color: #b0b0b0; }
+
+/* WIKILINK */
+.wikilink { color: #8b5cf6; cursor: pointer; }
+.wikilink:hover { text-decoration: underline; }
+
+/* SEARCH */
+.search { padding: 8px 16px; }
+.search input { width: 100%; padding: 6px 10px; background: #3c3c3c; border: 1px solid #555; border-radius: 4px; color: #dcddde; font-size: 12px; }
+.search input:focus { outline: none; border-color: #8b5cf6; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="vault-name">📁 CrowdWisdomTrading</div>
+  <div class="search"><input type="text" placeholder="Search files..." id="searchInput"></div>
+  <div class="file active" onclick="loadFile('00_Run_Summary.md')">
+    <span class="icon">📋</span>
+    <span class="name">00_Run_Summary.md</span>
+    <span class="size">3.4K</span>
+  </div>
+  <div class="file" onclick="loadFile('01_Marketing_Strategy.md')">
+    <span class="icon">📊</span>
+    <span class="name">01_Marketing_Strategy.md</span>
+    <span class="size">3.4K</span>
+  </div>
+  <div class="file" onclick="loadFile('02_Pain_Point_Analysis.md')">
+    <span class="icon">🧠</span>
+    <span class="name">02_Pain_Point_Analysis.md</span>
+    <span class="size">4.2K</span>
+  </div>
+  <div class="file" onclick="loadFile('03_Ad_Scripts.md')">
+    <span class="icon">🎬</span>
+    <span class="name">03_Ad_Scripts.md</span>
+    <span class="size">2.9K</span>
+  </div>
+  <div class="file" onclick="loadFile('04_Influencer_Research.md')">
+    <span class="icon">🤝</span>
+    <span class="name">04_Influencer_Research.md</span>
+    <span class="size">12K</span>
+  </div>
+  <div class="file" onclick="loadFile('05_Influencer_Outreach.md')">
+    <span class="icon">📧</span>
+    <span class="name">05_Influencer_Outreach.md</span>
+    <span class="size">7.7K</span>
+  </div>
+  <div class="file" onclick="loadFile('06_Email_Nurture_Sequence.md')">
+    <span class="icon">✉️</span>
+    <span class="name">06_Email_Nurture_Sequence.md</span>
+    <span class="size">2.5K</span>
+  </div>
+  <div class="file" onclick="loadFile('07_YouTube_Research.md')">
+    <span class="icon">🎥</span>
+    <span class="name">07_YouTube_Research.md</span>
+    <span class="size">20K</span>
+  </div>
+  <div class="file" onclick="loadFile('raw_ads.json')">
+    <span class="icon">📊</span>
+    <span class="name">raw_ads.json</span>
+    <span class="size">2.1M</span>
+  </div>
+  <div class="file" onclick="loadFile('selected_ads.json')">
+    <span class="icon">⭐</span>
+    <span class="name">selected_ads.json</span>
+    <span class="size">11K</span>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <!-- Content loads here -->
+</div>
+
+<script>
+const files = {
+  '00_Run_Summary.md': `<h1>00 — Run Summary: CrowdWisdomTrading Marketing Agent</h1>
+<blockquote><strong>Run Date:</strong> 2026-07-09 · <strong>Model:</strong> MiMo v2.5 Pro · <strong>Platform:</strong> Hermes Agent CLI</blockquote>
+<h2>Output Files</h2>
+<table>
+<tr><th>#</th><th>File</th><th>Description</th></tr>
+<tr><td>1</td><td><span class="wikilink" onclick="loadFile('01_Marketing_Strategy.md')">01_Marketing_Strategy</span></td><td>3 buyer personas, 3 channels, 5 angles, calendar, competitors</td></tr>
+<tr><td>2</td><td><span class="wikilink" onclick="loadFile('02_Pain_Point_Analysis.md')">02_Pain_Point_Analysis</span></td><td>Eugene Schwartz psychology: 5 pain points, 15 fear triggers</td></tr>
+<tr><td>3</td><td><span class="wikilink" onclick="loadFile('03_Ad_Scripts.md')">03_Ad_Scripts</span></td><td>3 video ads + 10 hook variations</td></tr>
+<tr><td>4</td><td><span class="wikilink" onclick="loadFile('04_Influencer_Research.md')">04_Influencer_Research</span></td><td>10 influencer profiles ranked by fit</td></tr>
+<tr><td>5</td><td><span class="wikilink" onclick="loadFile('05_Influencer_Outreach.md')">05_Influencer_Outreach</span></td><td>5 personalized DMs + templates</td></tr>
+<tr><td>6</td><td><span class="wikilink" onclick="loadFile('06_Email_Nurture_Sequence.md')">06_Email_Nurture_Sequence</span></td><td>5-email welcome funnel</td></tr>
+<tr><td>7</td><td><span class="wikilink" onclick="loadFile('07_YouTube_Research.md')">07_YouTube_Research</span></td><td>5 video analysis + Top 7 insights</td></tr>
+</table>
+<h2>Agents Used</h2>
+<table>
+<tr><th>#</th><th>Agent</th><th>Role</th></tr>
+<tr><td>1</td><td>Marketing Manager</td><td>Strategy + competitor research</td></tr>
+<tr><td>2</td><td>Ads Scraper</td><td>Apify Meta ads (200 scraped)</td></tr>
+<tr><td>3</td><td>Pain Extractor</td><td>Marketing psychology from ads</td></tr>
+<tr><td>4</td><td>Ad Script Writer</td><td>3 direct-response video scripts</td></tr>
+<tr><td>5</td><td>Influencer Outreach</td><td>Research + personalized DMs</td></tr>
+<tr><td>6</td><td>Email Sequence</td><td>Full nurture funnel</td></tr>
+</table>
+<h2>Data Sources</h2>
+<ul>
+<li>Meta Ads Library via Apify (200 ads)</li>
+<li>YouTube transcripts (5 videos)</li>
+<li>Web search for influencers</li>
+</ul>`,
+
+  '01_Marketing_Strategy.md': `<h1>Marketing Strategy & Competitor Analysis</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Marketing Manager</blockquote>
+<h2>3 Target Personas</h2>
+<h3>1. Alex, The Time-Starved Swing Trader</h3>
+<p><strong>Age:</strong> 32 | <strong>Occupation:</strong> Software engineer, trades on the side</p>
+<p><strong>Frustration:</strong> Spends 3+ hours a night scanning Twitter, Reddit, and Discord trying to separate signal from noise. Missed a 40% move on a mid-cap stock because the signal was buried in a 200-reply thread.</p>
+<p><strong>Why he'd pay:</strong> Values time over money. A curated signal feed that aggregates crowd conviction would give him back his evenings. He'd pay $49/mo without blinking.</p>
+<h3>2. Maria, The Risk-Averse Capital Allocator</h3>
+<p><strong>Age:</strong> 45 | <strong>Occupation:</strong> Family office analyst managing $8M</p>
+<p><strong>Frustration:</strong> Her firm's proprietary research is slow and expensive. She sees retail traders calling macro shifts weeks before her models catch up.</p>
+<p><strong>Why she'd pay:</strong> Needs structured, auditable crowd-sentiment data. She'd pay $299/mo for institutional-grade signal reports.</p>
+<h3>3. Jordan, The Aspiring Full-Time Trader</h3>
+<p><strong>Age:</strong> 26 | <strong>Occupation:</strong> Barista, trading a $12K account</p>
+<p><strong>Frustration:</strong> Follows 40 "guru" accounts with conflicting calls. Lost 30% of his account last quarter chasing tips.</p>
+<p><strong>Why he'd pay:</strong> Wants democratized access to crowd intelligence. He'd upgrade to $19/mo — the cost of one bad trade he'd avoid.</p>
+<h2>3 Acquisition Channels</h2>
+<h3>1. X (Twitter) Thread Marketing</h3>
+<p>Publish weekly "Crowd vs. Crowd" threads showing how aggregated signals outperformed a popular guru call. Real data, real proof. Cost: zero.</p>
+<h3>2. Trader Podcast Guest Tour</h3>
+<p>Swing trading and macro podcasts have deeply engaged audiences. Each appearance drives 200-500 qualified signups with no ad spend.</p>
+<h3>3. Referral-Driven Waitlist</h3>
+<p>Traders are competitive. Launch a waitlist where position moves up by referring others. Top referrers get lifetime free access.</p>`,
+
+  '03_Ad_Scripts.md': `<h1>Ad Scripts — CrowdWisdomTrading</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Ad Script Writer</blockquote>
+<h2>Script 1: "TOO MUCH NOISE" (30 seconds)</h2>
+<p><strong>Framework:</strong> Problem-Agitate-Solution-CTA</p>
+<p><strong>[HOOK]</strong><br>(B-roll: trader surrounded by 12 open charts, red candlesticks, notification spam)<br>"If you've got 47 tabs open right now trying to figure out your next trade — this is for you."</p>
+<p><strong>[PROBLEM]</strong><br>(Cut to: exhausted face lit by screen glow, clock shows 2 AM)<br>"Most traders don't fail because they lack skill. They fail because they're drowning in noise. Conflicting signals. Chat rooms screaming buy AND sell."</p>
+<p><strong>[SOLUTION]</strong><br>(Cut to: clean single-screen dashboard, calm green P&L)<br>"CrowdWisdomTrading flips the model. Instead of more noise, you get consensus intelligence — thousands of data points distilled into one clear signal."</p>
+<p><strong>[CTA]</strong><br>"Stop trading the chaos. Start trading the crowd wisdom. Link below — free account, sixty seconds."</p>
+<hr>
+<h2>Script 2: "WRONG DIRECTION" (30 seconds)</h2>
+<p><strong>Framework:</strong> Visual Hook-Counterintuitive Insight-Bridge-CTA</p>
+<p><strong>[HOOK]</strong><br>(B-roll: someone confidently swiping UP on a green trade — then it reverses hard to red)<br>"You just went long. And that's exactly why it's about to dump."</p>
+<p><strong>[PROBLEM → INSIGHT]</strong><br>"Here's what Wall Street knows that most retail traders don't — when everyone agrees, the trade is already crowded. Consensus isn't safety. It's a trap."</p>
+<p><strong>[CTA]</strong><br>"See the Crowd. Beat the Crowd."</p>`,
+
+  '06_Email_Nurture_Sequence.md': `<h1>Email Nurture Sequence</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Email Sequence</blockquote>
+<h2>Email 1: Day 0 — Welcome</h2>
+<p><strong>Subject:</strong> You're in. Here's what 10,000+ traders just voted on.</p>
+<blockquote>Hey — welcome to CrowdWisdomTrading.<br><br>You just joined a community of traders who believe one thing: the crowd is smarter than any single analyst.<br><br>Every day, thousands of real traders vote on where they think markets are headed. We aggregate that into a single signal — a crowd consensus score.<br><br>No guru worship. No hot takes. Just the raw wisdom of thousands of people putting their reputation on the line.</blockquote>
+<p><strong>CTA:</strong> [See Today's Top Consensus Signal →]</p>
+<hr>
+<h2>Email 2: Day 3 — Sample Signal + FOMO</h2>
+<p><strong>Subject:</strong> 87% of traders agreed on this. Here's what happened next.</p>
+<blockquote>Last Tuesday, 1,247 traders voted on NVDA heading into earnings. The crowd consensus? Strong bullish — 87% conviction.<br><br>That's not a tip from one guy with a Twitter account. That's over a thousand independent traders all saying the same thing.<br><br>NVDA beat. Moved 9% overnight.</blockquote>`,
+
+  '04_Influencer_Research.md': `<h1>Influencer Research</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Influencer Outreach</blockquote>
+<h2>Ranked Influencer Table</h2>
+<table>
+<tr><th>#</th><th>Name</th><th>Platform</th><th>Followers</th><th>Fit</th></tr>
+<tr><td>1</td><td>Meet Kevin</td><td>YouTube</td><td>2.1M</td><td>9/10</td></tr>
+<tr><td>2</td><td>Ricky Gutierrez</td><td>YouTube</td><td>1.2M</td><td>9/10</td></tr>
+<tr><td>3</td><td>Trades By Tom</td><td>IG/TikTok</td><td>500K/300K</td><td>9/10</td></tr>
+<tr><td>4</td><td>Andrei Jikh</td><td>YouTube</td><td>2.1M</td><td>8/10</td></tr>
+<tr><td>5</td><td>Stock Moe</td><td>YouTube</td><td>850K</td><td>8/10</td></tr>
+<tr><td>6</td><td>Ross Cameron</td><td>YouTube</td><td>1.8M</td><td>8/10</td></tr>
+<tr><td>7</td><td>Graham Stephan</td><td>YouTube</td><td>4.7M</td><td>7/10</td></tr>
+<tr><td>8</td><td>Humphrey Yang</td><td>YT/TikTok</td><td>3.8M/2.5M</td><td>7/10</td></tr>
+<tr><td>9</td><td>Mark Tilbury</td><td>YT/TikTok</td><td>2.2M/3M</td><td>7/10</td></tr>
+<tr><td>10</td><td>Nate O'Brien</td><td>YouTube</td><td>1.3M</td><td>6/10</td></tr>
+</table>`,
+
+  '05_Influencer_Outreach.md': `<h1>Influencer Outreach Drafts</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Influencer Outreach</blockquote>
+<h2>DM 1: Meet Kevin</h2>
+<p><strong>Platform:</strong> Email (business@meetkevin.com)</p>
+<blockquote>Hey Kevin,<br><br>Watched your earnings season breakdown last week — your point about how retail traders consistently buy the rumor too late was spot on.<br><br>We built something called CrowdWisdomTrading.com. It aggregates signals from 5,600+ professional traders and delivers a weekly crowd-consensus briefing.<br><br>Would you be open to taking a look and giving us your honest take? No pitch, no strings.</blockquote>`,
+
+  '02_Pain_Point_Analysis.md': `<h1>Pain Point Analysis</h1>
+<blockquote>Generated: 2026-07-09 · Agent: Pain Extractor · Methodology: Eugene Schwartz</blockquote>
+<h2>Core Pain Points</h2>
+<h3>1. Inconsistency</h3>
+<p>Losing trades more than winning. The reader already knows they're losing — the hook offers the ratio they crave.</p>
+<h3>2. Information Gap</h3>
+<p>Feeling shut out from real knowledge. "Someone knows something I don't."</p>
+<h3>3. Screen Slavery</h3>
+<p>Wasting hours watching candles. The symptom of a trader without a method.</p>
+<h3>4. Identity Crisis</h3>
+<p>"Am I actually a trader or just gambling?"</p>
+<h2>Fear Triggers</h2>
+<ul>
+<li>1 in 6 failure odds — "What if I'm always the 1 in 6?"</li>
+<li>Hidden government edge — "Everyone has an advantage but me."</li>
+<li>System vs. no system — "Smart traders aren't watching charts. I am."</li>
+</ul>`,
+
+  '07_YouTube_Research.md': `<h1>YouTube Video Research</h1>
+<blockquote>Generated: 2026-07-09 · 5 videos analyzed</blockquote>
+<h2>Top 7 Marketing Insights</h2>
+<h3>1. The "$8/Month Employee" Hook</h3>
+<p>"A team of AI agents that runs my business for $8/month." Concrete, absurdly low number. Contrasts with hiring costs.</p>
+<h3>2. The "While You Sleep" Compounding Flywheel</h3>
+<p>Agents work 24/7, learn from every task, get better over time. Your marketing compounds.</p>
+<h3>3. The "Anti-Hype Credibility" Angle</h3>
+<p>"I hate hype. I'm usually super cynical. But this one is different."</p>
+<h3>4. The "Reliability Trust" Argument</h3>
+<p>"If you're going to have AI employees, the minute they break, you lose trust."</p>`
+};
+
+function loadFile(filename) {
+  document.querySelectorAll('.file').forEach(f => f.classList.remove('active'));
+  event.target.closest('.file').classList.add('active');
+  
+  const content = document.getElementById('content');
+  if (files[filename]) {
+    content.innerHTML = files[filename];
+  } else {
+    content.innerHTML = '<h1>' + filename + '</h1><p>File content loading...</p>';
+  }
+}
+
+// Load first file by default
+document.getElementById('content').innerHTML = files['00_Run_Summary.md'];
+</script>
+
+</body>
+</html>
