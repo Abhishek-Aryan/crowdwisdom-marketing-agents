@@ -1,0 +1,18 @@
+# CrowdWisdomTrading Marketing Agent System
+# Requirements for running the multi-agent pipeline
+
+# Hermes Agent Framework
+# (installed separately via: pip install hermes-agent or from source)
+
+# HTTP & API
+requests>=2.31.0,<3
+urllib3>=2.0.0,<3
+
+# Telegram Bot
+python-telegram-bot>=20.0,<22
+
+# Data Processing
+python-dotenv>=1.0.0,<2
+
+# Utilities
+pyyaml>=6.0,<7
