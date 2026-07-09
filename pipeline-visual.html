@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrowdWisdomTrading — Full Pipeline Workflow</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+/* HEADER */
+.hero { background: linear-gradient(135deg, #0a1628 0%, #0f2027 50%, #0a1628 100%); padding: 60px 40px; text-align: center; border-bottom: 1px solid #1a3a4a; }
+.hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; }
+.hero h1 .cyan { color: #00d4ff; }
+.hero h1 .green { color: #00ff88; }
+.hero .subtitle { color: #6b7b8d; font-size: 16px; margin-top: 12px; }
+.hero .badges { margin-top: 20px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.hero .badge { padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: 600; }
+.hero .badge.cyan { background: rgba(0,212,255,0.1); border: 1px solid #00d4ff; color: #00d4ff; }
+.hero .badge.green { background: rgba(0,255,136,0.1); border: 1px solid #00ff88; color: #00ff88; }
+.hero .badge.amber { background: rgba(255,191,0,0.1); border: 1px solid #ffbf00; color: #ffbf00; }
+
+/* SECTION */
+.section { padding: 50px 40px; max-width: 1400px; margin: 0 auto; }
+.section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #4a5568; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
+.section-title::before { content: ''; width: 30px; height: 2px; background: #00d4ff; }
+
+/* PIPELINE OVERVIEW */
+.pipeline-overview { display: flex; gap: 0; align-items: stretch; margin-bottom: 40px; }
+.phase { flex: 1; background: #111827; border: 1px solid #1f2937; padding: 24px; position: relative; }
+.phase:first-child { border-radius: 12px 0 0 12px; }
+.phase:last-child { border-radius: 0 12px 12px 0; }
+.phase .num { font-size: 11px; color: #4a5568; font-weight: 700; margin-bottom: 8px; }
+.phase h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.phase p { font-size: 12px; color: #6b7b8d; line-height: 1.5; }
+.phase .arrow { position: absolute; right: -12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: #0a0a0a; border: 1px solid #1f2937; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; color: #00d4ff; font-size: 14px; }
+.phase.input h3 { color: #00d4ff; }
+.phase.process h3 { color: #00ff88; }
+.phase.output h3 { color: #a78bfa; }
+.phase.deliver h3 { color: #ffbf00; }
+
+/* AGENT DETAILS */
+.agent-flow { display: flex; flex-direction: column; gap: 20px; }
+.agent-step { display: flex; gap: 20px; align-items: flex-start; }
+.agent-step .step-num { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; flex-shrink: 0; }
+.agent-step .step-num.s1 { background: rgba(0,212,255,0.15); color: #00d4ff; border: 2px solid #00d4ff; }
+.agent-step .step-num.s2 { background: rgba(0,255,136,0.15); color: #00ff88; border: 2px solid #00ff88; }
+.agent-step .step-num.s3 { background: rgba(167,139,250,0.15); color: #a78bfa; border: 2px solid #a78bfa; }
+.agent-step .step-num.s4 { background: rgba(255,191,0,0.15); color: #ffbf00; border: 2px solid #ffbf00; }
+.agent-step .step-num.s5 { background: rgba(251,113,133,0.15); color: #fb7185; border: 2px solid #fb7185; }
+.agent-step .step-num.s6 { background: rgba(96,165,250,0.15); color: #60a5fa; border: 2px solid #60a5fa; }
+
+.step-content { flex: 1; background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 20px; }
+.step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.step-header h3 { font-size: 16px; font-weight: 700; }
+.step-header .tools { display: flex; gap: 6px; }
+.step-header .tool-tag { font-size: 10px; padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid #2d3748; color: #a0aec0; }
+.step-body { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.step-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #4a5568; margin-bottom: 8px; }
+.step-col ul { list-style: none; }
+.step-col li { font-size: 13px; color: #cbd5e0; padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; }
+.step-col li::before { content: '→'; color: #4a5568; flex-shrink: 0; }
+.input-box { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 12px; margin-top: 8px; }
+.input-box .label { font-size: 10px; color: #00d4ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.input-box code { font-size: 12px; color: #e0e0e0; font-family: 'Consolas', 'Courier New', monospace; }
+.output-box { background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); border-radius: 8px; padding: 12px; margin-top: 8px; }
+.output-box .label { font-size: 10px; color: #00ff88; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.output-box code { font-size: 12px; color: #e0e0e0; font-family: 'Consolas', 'Courier New', monospace; }
+
+/* CONNECTOR */
+.connector { display: flex; align-items: center; justify-content: center; padding: 4px 0 4px 24px; }
+.connector .line { width: 2px; height: 24px; background: linear-gradient(180deg, #1f2937, #2d3748, #1f2937); }
+.connector .dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; box-shadow: 0 0 8px rgba(0,212,255,0.5); }
+
+/* TOOLS USED */
+.tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tool-card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 16px; }
+.tool-card .icon { font-size: 28px; margin-bottom: 8px; }
+.tool-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.tool-card p { font-size: 11px; color: #6b7b8d; line-height: 1.4; }
+.tool-card .used-for { margin-top: 8px; font-size: 10px; color: #4a5568; text-transform: uppercase; letter-spacing: 1px; }
+
+/* KANBAN */
+.kanban-row { display: flex; gap: 8px; }
+.kanban-task { flex: 1; background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; text-align: center; }
+.kanban-task .id { font-size: 9px; color: #4a5568; }
+.kanban-task .name { font-size: 11px; color: #e0e0e0; margin: 6px 0; font-weight: 600; }
+.kanban-task .status { font-size: 10px; color: #00ff88; background: rgba(0,255,136,0.1); padding: 2px 8px; border-radius: 10px; display: inline-block; }
+
+/* OUTPUT FILES */
+.files-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.file-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px; }
+.file-card .name { font-size: 12px; color: #00d4ff; font-weight: 600; margin-bottom: 4px; font-family: 'Consolas', monospace; }
+.file-card .desc { font-size: 11px; color: #6b7b8d; line-height: 1.4; }
+.file-card .size { font-size: 10px; color: #4a5568; margin-top: 6px; }
+
+/* SUMMARY */
+.summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.summary-card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 20px; text-align: center; }
+.summary-card .num { font-size: 36px; font-weight: 800; }
+.summary-card .num.cyan { color: #00d4ff; }
+.summary-card .num.green { color: #00ff88; }
+.summary-card .num.purple { color: #a78bfa; }
+.summary-card .num.amber { color: #ffbf00; }
+.summary-card .num.rose { color: #fb7185; }
+.summary-card .label { font-size: 12px; color: #6b7b8d; margin-top: 4px; }
+
+/* FOOTER */
+.footer { padding: 30px 40px; border-top: 1px solid #1f2937; text-align: center; }
+.footer p { font-size: 12px; color: #4a5568; }
+
+/* LIVE DEMO SECTION */
+.demo-terminal { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 20px; font-family: 'Consolas', 'Courier New', monospace; }
+.demo-terminal .prompt { color: #00ff88; }
+.demo-terminal .cmd { color: #e0e0e0; }
+.demo-terminal .output { color: #8b949e; }
+.demo-terminal .success { color: #00ff88; }
+.demo-terminal .file { color: #00d4ff; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>CrowdWisdom<span class="cyan">Trading</span> <span class="green">Marketing Agent</span></h1>
+  <p class="subtitle">Complete AI-powered marketing pipeline built on Hermes Agent Framework</p>
+  <div class="badges">
+    <span class="badge cyan">6 AI Agents</span>
+    <span class="badge green">7/7 Kanban Tasks Done</span>
+    <span class="badge amber">31/31 Checklist Complete</span>
+  </div>
+</div>
+
+<!-- PIPELINE OVERVIEW -->
+<div class="section">
+  <div class="section-title">Complete Pipeline Overview</div>
+  <div class="pipeline-overview">
+    <div class="phase input">
+      <div class="num">PHASE 1</div>
+      <h3>Data Collection</h3>
+      <p>Scrape Meta Ads Library via Apify. Extract YouTube transcripts. Search web for influencers.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="phase input">
+      <div class="num">PHASE 2</div>
+      <h3>Research & Analysis</h3>
+      <p>Analyze winning ads. Extract pain points using Eugene Schwartz methodology. Research competitors.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="phase process">
+      <div class="num">PHASE 3</div>
+      <h3>Content Creation</h3>
+      <p>Write ad scripts, influencer DMs, email sequences, and marketing strategy documents.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="phase output">
+      <div class="num">PHASE 4</div>
+      <h3>Output & Storage</h3>
+      <p>Save all deliverables to Obsidian vault with wikilinks. Push to GitHub. Send via Telegram.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="phase deliver">
+      <div class="num">PHASE 5</div>
+      <h3>Delivery</h3>
+      <p>8 markdown files, 2 JSON data files, 1 Python orchestrator, 1 README, 1 visual dashboard.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DETAILED AGENT FLOW -->
+<div class="section">
+  <div class="section-title">Agent-by-Agent Workflow</div>
+  <div class="agent-flow">
+
+    <!-- AGENT 1 -->
+    <div class="agent-step">
+      <div class="step-num s1">1</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#00d4ff">Marketing Manager Agent</h3>
+          <div class="tools">
+            <span class="tool-tag">Hermes AIAgent</span>
+            <span class="tool-tag">Web Search</span>
+            <span class="tool-tag">Obsidian</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Defines 3 buyer personas (name, age, frustration, willingness to pay)</li>
+              <li>Identifies top 3 acquisition channels with cost estimates</li>
+              <li>Creates 5 messaging angles (fear, aspiration, social proof)</li>
+              <li>Builds a 30-day content calendar</li>
+              <li>Analyzes 4 competitors (Motley Fool, Seeking Alpha, YouTubers, Discord)</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>project_context.md (product description, pain points, competitors)</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>01_Marketing_Strategy.md (18.6 KB) — personas, channels, calendar, competitor analysis</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="line"></div><div class="dot"></div></div>
+
+    <!-- AGENT 2A -->
+    <div class="agent-step">
+      <div class="step-num s2">2A</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#00ff88">Ads Scraper Agent</h3>
+          <div class="tools">
+            <span class="tool-tag">Apify API</span>
+            <span class="tool-tag">meta-ad-library-scraper</span>
+            <span class="tool-tag">JSON</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Calls Apify actor <code>gTebjMDkz25esWXsY</code> (meta-ad-library-multi-search-scraper)</li>
+              <li>Searches for "stock trading signals" and "trading newsletter"</li>
+              <li>Collects 100 ads per keyword (200 total)</li>
+              <li>Extracts: ad ID, advertiser, headline, body, CTA, platforms, start date</li>
+              <li>Selects top 10 by hook strength, value prop, social proof, pain specificity</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>Keywords: "stock trading signals", "trading newsletter" · Country: US · Actor: gTebjMDkz25esWXsY</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>raw_ads.json (2.1 MB, 200 ads) · selected_ads.json (10.8 KB, 10 curated with "why_selected")</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="line"></div><div class="dot"></div></div>
+
+    <!-- AGENT 2B -->
+    <div class="agent-step">
+      <div class="step-num s3">2B</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#a78bfa">Pain Point Extractor Agent</h3>
+          <div class="tools">
+            <span class="tool-tag">Hermes AIAgent</span>
+            <span class="tool-tag">Eugene Schwartz</span>
+            <span class="tool-tag">Obsidian</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Reads selected_ads.json (top 10 winning Meta ads)</li>
+              <li>Extracts 5 deep emotional pain points (shame, knowledge gap, time poverty, betrayal, FOMO)</li>
+              <li>Identifies 15 specific fear triggers with direct ad quotes</li>
+              <li>Analyzes social proof patterns (numbers in 9/10 ads is dominant)</li>
+              <li>Builds swipe file of power words and emotional vocabulary</li>
+              <li>Extracts 10 reusable hook templates</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>selected_ads.json (10 curated trading ads) · Eugene Schwartz "Breakthrough Advertising" methodology</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>02_Pain_Point_Analysis.md (25.7 KB) — 5 pain points, 15 fear triggers, 10 hook templates, power words</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="line"></div><div class="dot"></div></div>
+
+    <!-- AGENT 2C -->
+    <div class="agent-step">
+      <div class="step-num s4">2C</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#ffbf00">Ad Script Writer Agent</h3>
+          <div class="tools">
+            <span class="tool-tag">Hermes AIAgent</span>
+            <span class="tool-tag">PAS Framework</span>
+            <span class="tool-tag">Obsidian</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Reads pain analysis + YouTube research for context</li>
+              <li>Writes Script 1: "The Pain Opener" (30s, Problem-Agitate-Solution-CTA)</li>
+              <li>Writes Script 2: "Social Proof" (45s, Hook-Proof-Mechanism-Offer-CTA)</li>
+              <li>Writes Script 3: "Pattern Interrupt" (30s, Visual Hook-Counterintuitive-Bridge-CTA)</li>
+              <li>Labels every line: [HOOK] [PROBLEM] [AGITATE] [SOLUTION] [CTA]</li>
+              <li>Creates 10 alternative hooks for A/B testing</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>02_Pain_Point_Analysis.md · 07_YouTube_Research.md · CrowdWisdomTrading product context</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>03_Ad_Scripts.md (8.9 KB) — 3 video scripts + 10 hook variations + production notes</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="line"></div><div class="dot"></div></div>
+
+    <!-- AGENT 3 -->
+    <div class="agent-step">
+      <div class="step-num s5">3</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#fb7185">Influencer Outreach Agent</h3>
+          <div class="tools">
+            <span class="tool-tag">Hermes AIAgent</span>
+            <span class="tool-tag">Web Search</span>
+            <span class="tool-tag">Browser</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Searches for 10 trading influencers (200K+ followers) across YouTube, IG, TikTok, X</li>
+              <li>Collects: name, handle, followers, content style, audience level, contact info</li>
+              <li>Ranks by fit score (9/10 = Meet Kevin, Ricky Gutierrez, Trades By Tom)</li>
+              <li>Writes 5 personalized cold DMs (under 150 words each)</li>
+              <li>Creates follow-up template (1 week later) and positive-reply template</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>Web search results · YouTube channel data · Instagram/TikTok/X profiles · CrowdWisdom product context</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>04_Influencer_Research.md (11.6 KB) · 05_Influencer_Outreach.md (7.9 KB) — 10 profiles + 5 DMs + templates</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="line"></div><div class="dot"></div></div>
+
+    <!-- AGENT 4 -->
+    <div class="agent-step">
+      <div class="step-num s6">4</div>
+      <div class="step-content">
+        <div class="step-header">
+          <h3 style="color:#60a5fa">Email Sequence Agent (Bonus)</h3>
+          <div class="tools">
+            <span class="tool-tag">Hermes AIAgent</span>
+            <span class="tool-tag">Copywriting</span>
+            <span class="tool-tag">Obsidian</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-col">
+            <h4>What It Does</h4>
+            <ul>
+              <li>Writes 5-email welcome + nurture sequence (free → Pro conversion)</li>
+              <li>Email 1 (Day 0): Welcome + first value delivery</li>
+              <li>Email 2 (Day 1): Founder story — "I lost $8,000 following one guru"</li>
+              <li>Email 3 (Day 3): Product demo — NVDA consensus signal example</li>
+              <li>Email 4 (Day 5): Social proof — 3 mini case studies</li>
+              <li>Email 5 (Day 7): Urgency close — objection removal + CTA</li>
+            </ul>
+          </div>
+          <div class="step-col">
+            <h4>Input → Output</h4>
+            <div class="input-box">
+              <div class="label">Input</div>
+              <code>CrowdWisdomTrading product context · Pain points from Agent 2B · Conversion copywriting principles</code>
+            </div>
+            <div class="output-box">
+              <div class="label">Output</div>
+              <code>06_Email_Nurture_Sequence.md (12.2 KB) — 5 emails with A/B subject lines, preview text, CTAs</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOOLS USED -->
+<div class="section">
+  <div class="section-title">Tools & Technologies Used</div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="icon">🤖</div>
+      <h4>Hermes Agent</h4>
+      <p>Multi-agent framework by Nous Research. AIAgent class for isolated agent sessions with custom system prompts.</p>
+      <div class="used-for">Used for: All 6 agents</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">📋</div>
+      <h4>Kanban Board</h4>
+      <p>Task orchestration via <code>hermes kanban</code>. 7 tasks with dependency chains and status tracking.</p>
+      <div class="used-for">Used for: Pipeline management</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🔍</div>
+      <h4>Apify</h4>
+      <p>Meta Ads Library scraper. Actor: <code>gTebjMDkz25esWXsY</code>. Scraped 200 ads for trading keywords.</p>
+      <div class="used-for">Used for: Agent 2A (Ads Scraper)</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">📝</div>
+      <h4>Obsidian</h4>
+      <p>Knowledge base with [[wikilinks]]. All 8 deliverables saved as structured markdown.</p>
+      <div class="used-for">Used for: All output storage</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">📱</div>
+      <h4>Telegram Bot</h4>
+      <p>Bot: @abhi1909_bot. Sent 5 demo messages with pipeline summaries and script hooks.</p>
+      <div class="used-for">Used for: Phase 10 demos</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🔗</div>
+      <h4>GitHub</h4>
+      <p>Repository: <code>crowdwisdom-marketing-agents</code>. 14 files, 4 commits, full README.</p>
+      <div class="used-for">Used for: Code hosting + submission</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🧠</div>
+      <h4>MiMo v2.5 Pro</h4>
+      <p>LLM by Xiaomi. Powers all agent conversations via Hermes model routing.</p>
+      <div class="used-for">Used for: All agent inference</div>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🎬</div>
+      <h4>YouTube Transcript API</h4>
+      <p>Extracted transcripts from 5 CrowdWisdomTrading videos for marketing insight analysis.</p>
+      <div class="used-for">Used for: Agent 5 (YouTube Research)</div>
+    </div>
+  </div>
+</div>
+
+<!-- KANBAN BOARD -->
+<div class="section">
+  <div class="section-title">Kanban Board — All Tasks Complete</div>
+  <div class="kanban-row">
+    <div class="kanban-task">
+      <div class="id">t_c7d4c79d</div>
+      <div class="name">Marketing Manager</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_b632c735</div>
+      <div class="name">Ads Scraper</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_bc56be97</div>
+      <div class="name">Pain Extractor</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_790d8355</div>
+      <div class="name">Ad Script Writer</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_a1e3d008</div>
+      <div class="name">Influencer Outreach</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_f6a662ac</div>
+      <div class="name">Email Sequence</div>
+      <div class="status">✓ DONE</div>
+    </div>
+    <div class="kanban-task">
+      <div class="id">t_f00599b5</div>
+      <div class="name">YouTube Research</div>
+      <div class="status">✓ DONE</div>
+    </div>
+  </div>
+</div>
+
+<!-- OUTPUT FILES -->
+<div class="section">
+  <div class="section-title">Deliverables — Obsidian Vault</div>
+  <div class="files-grid">
+    <div class="file-card">
+      <div class="name">00_Run_Summary.md</div>
+      <div class="desc">Master index with wikilinks to all outputs, agent list, Apify config, LLM model</div>
+      <div class="size">3.4 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">01_Marketing_Strategy.md</div>
+      <div class="desc">3 buyer personas, 3 acquisition channels, 5 messaging angles, 30-day calendar, 4 competitor analyses</div>
+      <div class="size">18.6 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">02_Pain_Point_Analysis.md</div>
+      <div class="desc">Eugene Schwartz analysis: 5 pain points, 15 fear triggers, social proof patterns, 10 hook templates</div>
+      <div class="size">25.7 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">03_Ad_Scripts.md</div>
+      <div class="desc">3 video ad scripts (30s/45s/30s) with labeled beats, b-roll directions, 10 alternative hooks</div>
+      <div class="size">8.9 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">04_Influencer_Research.md</div>
+      <div class="desc">10 trading influencers ranked by fit score (200K-5M followers) with contact info</div>
+      <div class="size">11.6 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">05_Influencer_Outreach.md</div>
+      <div class="desc">5 personalized cold DMs + follow-up template + positive-reply transition template</div>
+      <div class="size">7.9 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">06_Email_Nurture_Sequence.md</div>
+      <div class="desc">5-email welcome funnel: welcome → founder story → demo → social proof → urgency close</div>
+      <div class="size">12.2 KB</div>
+    </div>
+    <div class="file-card">
+      <div class="name">07_YouTube_Research.md</div>
+      <div class="desc">5 video transcript analyses + Top 7 Marketing Insights for ad scripts and outreach</div>
+      <div class="size">20.2 KB</div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE DEMO -->
+<div class="section">
+  <div class="section-title">Live Demo — Pipeline Running</div>
+  <div class="demo-terminal">
+    <div><span class="prompt">$</span> <span class="cmd">cd ~/crowdwisdom-agents && python main_orchestrator.py</span></div>
+    <br>
+    <div><span class="output">============================================================</span></div>
+    <div><span class="output">CROWDWISDOMTRADING MARKETING AGENT PIPELINE</span></div>
+    <div><span class="output">============================================================</span></div>
+    <div><span class="output">  Model:  mimo-v2.5-pro</span></div>
+    <div><span class="output">  Vault:  ~/ObsidianVault/CrowdWisdomTrading</span></div>
+    <div><span class="output">  Apify:  configured</span></div>
+    <div><span class="output">============================================================</span></div>
+    <br>
+    <div><span class="output">[1/4] Marketing Manager Agent...</span></div>
+    <div><span class="success">  Saved: 01_Marketing_Strategy.md (3,360 chars)</span></div>
+    <div><span class="output">  → 3 personas, 3 channels, competitor analysis</span></div>
+    <br>
+    <div><span class="output">[2/4] Pain Point Extractor Agent...</span></div>
+    <div><span class="success">  Saved: 02_Pain_Point_Analysis.md (3,926 chars)</span></div>
+    <div><span class="output">  → 5 pain points, 15 fear triggers, hook templates</span></div>
+    <br>
+    <div><span class="output">[3/4] Ad Script Writer Agent...</span></div>
+    <div><span class="success">  Saved: 03_Ad_Scripts.md (2,831 chars)</span></div>
+    <div><span class="output">  → 3 video scripts, 10 hook variations</span></div>
+    <br>
+    <div><span class="output">[4/4] Email Sequence Agent...</span></div>
+    <div><span class="success">  Saved: 06_Email_Nurture_Sequence.md (2,369 chars)</span></div>
+    <div><span class="output">  → 5-email welcome funnel</span></div>
+    <br>
+    <div><span class="output">============================================================</span></div>
+    <div><span class="success">PIPELINE COMPLETE — 4 agents, 12,486 chars generated</span></div>
+    <div><span class="output">============================================================</span></div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section">
+  <div class="section-title">Final Summary</div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="num cyan">6</div>
+      <div class="label">AI Agents</div>
+    </div>
+    <div class="summary-card">
+      <div class="num green">200</div>
+      <div class="label">Meta Ads Scraped</div>
+    </div>
+    <div class="summary-card">
+      <div class="num purple">8</div>
+      <div class="label">Deliverable Files</div>
+    </div>
+    <div class="summary-card">
+      <div class="num amber">7/7</div>
+      <div class="label">Kanban Tasks Done</div>
+    </div>
+    <div class="summary-card">
+      <div class="num rose">31/31</div>
+      <div class="label">Checklist Items</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>CrowdWisdomTrading Marketing Agent · Built with Hermes Agent by Nous Research · 2026-07-09</p>
+  <p style="margin-top:8px">GitHub: github.com/Abhishek-Aryan/crowdwisdom-marketing-agents</p>
+</div>
+
+</body>
+</html>
