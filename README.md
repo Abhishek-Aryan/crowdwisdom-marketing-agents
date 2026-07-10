@@ -4,39 +4,41 @@ A multi-agent AI marketing system built on **Hermes Agent Framework** that autom
 
 ## What It Does
 
-6 specialized AI agents collaborate through a Kanban work queue to produce a complete go-to-market strategy:
+6 specialized AI agents collaborate through a Kanban work queue to produce a complete go-to-market strategy. Agents read each other's outputs from the Obsidian vault, enabling cross-stage context and iterative refinement.
 
 | Agent | Role | Output |
 |-------|------|--------|
 | Marketing Manager | Strategy, personas, competitors | `01_Marketing_Strategy.md` |
-| Ads Scraper | Scrape Meta Ads via Apify | `raw_ads.json`, `selected_ads.json` |
+| Ads Scraper | Scrape Meta Ads via Apify (30-day filter) | `raw_ads.json`, `selected_ads.json` |
 | Pain Extractor | Eugene Schwartz psychology analysis | `02_Pain_Point_Analysis.md` |
 | Ad Script Writer | 3 direct-response video scripts | `03_Ad_Scripts.md` |
-| Influencer Outreach | 10 profiles + 5 personalized DMs | `04_Influencer_Research.md`, `05_Influencer_Outreach.md` |
+| Influencer Outreach | Apify YouTube scraping + 5 personalized DMs | `04_Influencer_Research.md`, `05_Influencer_Outreach.md` |
 | Email Sequence | 5-email nurture funnel | `06_Email_Nurture_Sequence.md` |
 
 ## Project Structure
 
 ```
 crowdwisdom-marketing-agents/
-├── main_orchestrator.py     # Main pipeline with kanban integration
-├── kanban_manager.py        # Programmatic kanban task management
-├── agent_loop.py            # Goal-directed agents with skill loading
-├── apify_scraper.py         # Meta Ads Library scraping via Apify
+├── main_orchestrator.py     # Pipeline with kanban comments + cross-stage vault reading
+├── kanban_manager.py        # Programmatic kanban task management (comments, links, stats)
+├── agent_loop.py            # Agent loops with run_conversation() + vault context
+├── apify_scraper.py         # Meta Ads Library scraping (30-day filter, dedup fix)
+├── influencer_scraper.py    # YouTube influencer scraping via Apify
 ├── telegram_bot.py          # Interactive Telegram bot with agent routing
+├── vault_sync.py            # Vault integrity verification (files, sizes, wikilinks, JSON)
 ├── demo.py                  # Full pipeline demo script
-├── config.py                # Centralized configuration
+├── config.py                # Centralized configuration (.env auto-load)
 ├── project_context.md       # CrowdWisdomTrading product context
-├── requirements.txt         # Python dependencies
-├── skills/                  # Reusable agent skills
+├── .env.example             # Environment variable template
+├── .gitignore               # Ignores __pycache__ and .env
+├── skills/                  # Reusable agent skills (loaded into agent context)
 │   ├── marketing_strategy.md
 │   ├── ads_analysis.md
 │   ├── pain_extraction.md
 │   ├── ad_scripts.md
 │   ├── influencer_outreach.md
 │   └── email_sequence.md
-├── output/                  # Local output directory
-└── README.md
+└── output/                  # Local output directory
 ```
 
 ## Setup
@@ -49,25 +51,34 @@ pip install -r requirements.txt
 
 ### 2. Set Environment Variables
 
-Create `~/.hermes/.env`:
-
-```env
-# LLM Provider (pick one)
-OPENROUTER_API_KEY=your_key_here
-
-# Apify (free tier)
-APIFY_TOKEN=your_apify_token_here
-
-# Telegram Bot
-TELEGRAM_BOT_TOKEN=your_bot_token_here
-TELEGRAM_ALLOWED_USERS=your_user_id
-```
-
-### 3. Configure Model
+Copy `.env.example` to `.env` and fill in your keys:
 
 ```bash
-hermes model
-# Or set in config.py: MODEL = "your-model-name"
+cp .env.example .env
+```
+
+Required variables:
+```env
+# LLM Provider — OpenRouter (recommended)
+OPENROUTER_API_KEY=your_key_here
+
+# Apify (free tier at https://apify.com)
+APIFY_TOKEN=your_apify_token_here
+
+# Telegram Bot (create via @BotFather)
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+TELEGRAM_ALLOWED_USERS=your_user_id
+
+# Model (OpenRouter format)
+HERMES_MODEL=openai/gpt-4o
+```
+
+### 3. Install Hermes Agent
+
+```bash
+# Hermes is the core framework — install from source
+git clone https://github.com/NousResearch/hermes-agent.git ~/.hermes/hermes-agent
+cd ~/.hermes/hermes-agent && pip install -r requirements.txt
 ```
 
 ## Usage
@@ -81,105 +92,116 @@ python main_orchestrator.py
 ```bash
 python demo.py              # Full demo
 python demo.py --quick      # Quick demo (kanban only)
-python demo.py --telegram   # Start Telegram bot after demo
 ```
 
 ### Start Telegram Bot
 ```bash
-python telegram_bot.py
+python main_orchestrator.py --telegram
 ```
 
 ### Show Kanban Board
 ```bash
 python main_orchestrator.py --kanban
-# Or directly: hermes kanban list
+```
+
+### Verify Vault Integrity
+```bash
+python vault_sync.py
 ```
 
 ## Key Features
 
-### 1. Kanban Integration
-Tasks are created, tracked, and completed programmatically via `hermes kanban` CLI:
-```python
-from kanban_manager import KanbanManager
-km = KanbanManager("crowdwisdom-marketing")
-km.init_board()
-task_id = km.create_task("My Task", "Task description")
-km.claim_task(task_id)
-# ... do work ...
-km.complete_task(task_id)
-```
+### 1. Real Agent Loops with Conversation History
+Agents use `AIAgent.run_conversation()` for full message history tracking. Conversation history persists across iterations — the agent sees and improves upon its previous attempts.
 
-### 2. Agent Loops
-Agents run iteratively until the goal is achieved:
 ```python
 from agent_loop import AgentLoop
 agent = AgentLoop(
     name="My Agent",
     role="Strategy",
     system_prompt="You are a marketing strategist.",
-    skills=["marketing_strategy"],  # Skills loaded from skills/
+    skills=["marketing_strategy"],
     max_iterations=3,
+    vault_context=["selected_ads.json"],  # Reads vault files as context
 )
-result = agent.run(goal="Write a marketing strategy", save_as="strategy.md")
+result = agent.run(goal="Analyze ads", save_as="analysis.md")
 ```
 
-### 3. Skill System
-Reusable skills in `skills/` directory are loaded into agent context:
-```
-skills/
-├── marketing_strategy.md   # Strategy & personas
-├── ads_analysis.md         # Ad scoring methodology
-├── pain_extraction.md      # Eugene Schwartz framework
-├── ad_scripts.md           # Script structure templates
-├── influencer_outreach.md  # Outreach best practices
-└── email_sequence.md       # Email funnel framework
+### 2. Cross-Stage Vault Reading
+Agents read each other's outputs from the Obsidian vault. The Pain Extractor reads `selected_ads.json`, the Ad Script Writer reads the pain analysis, and the Email agent reads both strategy and pain analysis.
+
+### 3. Kanban Integration with Comments and Dependencies
+Tasks are created, tracked, commented, and completed programmatically:
+```python
+from kanban_manager import KanbanManager
+km = KanbanManager("crowdwisdom-marketing")
+km.init_board()
+task_id = km.create_task("My Task", "Description")
+km.link_tasks(parent_id, child_id)    # Dependency chain
+km.claim_task(task_id)
+km.comment_task(task_id, "Starting work")  # Progress tracking
+# ... do work ...
+km.complete_task(task_id)
+km.get_stats()  # Board statistics
 ```
 
-### 4. Telegram Bot
+### 4. Native Hermes Skills
+Skills are registered as proper Hermes skills under `~/.hermes/skills/marketing/`:
+- `crowdwisdom-strategy` — Marketing strategy with web_search for competitor research
+- `crowdwisdom-ads` — Eugene Schwartz pain extraction + ad script writing
+- `crowdwisdom-influencer` — Influencer research + cold DM drafting
+
+### 5. Telegram Bot
 Interactive bot with 5 agent modes:
 ```
 /start    — Welcome message
 /status   — Show pipeline status
-/kanban   — Show kanban board
+/kanban   — Show kanban board (crowdwisdom-marketing)
 /agents   — List agent modes
 /switch <mode> — Switch agent (general/strategy/copywriter/influencer/email)
 ```
 
-### 5. Apify Integration
-Scrapes Meta Ads Library for trading keywords:
+### 6. Apify Integration
+Scrapes Meta Ads Library with 30-day date filter and deduplication:
 ```python
 from apify_scraper import scrape_meta_ads, select_top_ads
 ads = scrape_meta_ads(["stock trading signals", "trading newsletter"])
-selected = select_top_ads(ads, top_n=10)
+selected = select_top_ads(ads, top_n=10)  # Deduped by advertiser, scored
 ```
 
-### 6. Obsidian Output
+### 7. Vault Sync Verification
+Verify all expected files exist, sizes are reasonable, wikilinks resolve, and JSON is valid:
+```bash
+python vault_sync.py
+```
+
+### 8. Obsidian Output
 All deliverables saved to Obsidian vault with `[[wikilinks]]`:
 ```
 ~/ObsidianVault/CrowdWisdomTrading/
-├── 00_Run_Summary.md
-├── 01_Marketing_Strategy.md
-├── 02_Pain_Point_Analysis.md
-├── 03_Ad_Scripts.md
-├── 04_Influencer_Research.md
-├── 05_Influencer_Outreach.md
-├── 06_Email_Nurture_Sequence.md
-├── 07_YouTube_Research.md
-├── raw_ads.json
-└── selected_ads.json
+├── 00_Run_Summary.md          # Master index with wikilinks + kanban stats
+├── 01_Marketing_Strategy.md   # 3 personas, channels, calendar, competitors
+├── 02_Pain_Point_Analysis.md  # Eugene Schwartz analysis with ad quotes
+├── 03_Ad_Scripts.md           # 3 scripts + 10 hook variations
+├── 04_Influencer_Research.md  # 10 profiles (scraped + LLM-enriched)
+├── 05_Influencer_Outreach.md  # 5 DMs + follow-up templates
+├── 06_Email_Nurture_Sequence.md  # 5-email funnel with A/B subjects
+├── 07_YouTube_Research.md     # Video analysis + marketing insights
+├── raw_ads.json               # 200 scraped Meta ads
+└── selected_ads.json          # Top 10 curated ads with scores
 ```
 
 ## Evaluation Criteria
 
 | Criteria | Implementation |
 |----------|---------------|
-| **Kanban** | `kanban_manager.py` — programmatic task creation, tracking, completion |
-| **Loops** | `agent_loop.py` — iterative agent execution with refinement |
-| **Skills** | `skills/` directory — 6 reusable skill files loaded into agent context |
-| **Telegram** | `telegram_bot.py` — interactive bot with 5 agent modes |
-| **Hermes** | `from run_agent import AIAgent` — core framework |
-| **Obsidian** | All outputs saved to vault with [[wikilinks]] |
-| **Apify** | `apify_scraper.py` — Meta Ads Library scraping |
+| **Kanban** | `kanban_manager.py` — tasks with comments, dependency links, stats |
+| **Loops** | `agent_loop.py` — `run_conversation()` with conversation history |
+| **Skills** | Native Hermes skills in `~/.hermes/skills/marketing/` + local `skills/` |
+| **Telegram** | `telegram_bot.py` — 5 agent modes, --board flag for kanban |
+| **Hermes** | `AIAgent.run_conversation()` — full message history + tool access |
+| **Obsidian** | Cross-stage vault reading + `vault_sync.py` verification |
+| **Apify** | `apify_scraper.py` + `influencer_scraper.py` — 30-day filter, dedup |
 
 ## Apify Configuration
 
@@ -188,15 +210,16 @@ All deliverables saved to Obsidian vault with `[[wikilinks]]`:
 | **Actor** | `meta-ad-library-multi-search-scraper` |
 | **Actor ID** | `gTebjMDkz25esWXsY` |
 | **Keywords** | `"stock trading signals"`, `"trading newsletter"` |
-| **Token** | `APIFY_TOKEN` (set in `~/.hermes/.env`) |
+| **Filter** | Last 30 days, deduplicated by advertiser |
+| **Token** | `APIFY_TOKEN` (set in `.env`) |
 
 ## LLM Configuration
 
 | Field | Value |
 |-------|-------|
 | **Model** | Configurable via `HERMES_MODEL` env var |
-| **Default** | `mimo-v2.5-pro` |
-| **Provider** | Any Hermes-supported provider |
+| **Default** | `openai/gpt-4o` (OpenRouter-compatible) |
+| **Provider** | OpenRouter (`OPENROUTER_API_KEY`) or NVIDIA (`NVIDIA_API_KEY`) |
 
 ## License
 
