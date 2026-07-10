@@ -1,186 +1,189 @@
-# 05 — Influencer Outreach: CrowdWisdomTrading.com
+# CrowdWisdomTrading — Cold DM Scripts for Top 5 Influencers
 
-> **Date:** 2026-07-09
-> **Status:** Complete
-> **Owner:** Influencer Outreach Agent
-> **Source:** 04_Influencer_Research.md
-> **Approach:** Opinion-first outreach (not a pitch), personalized to recent content, low-friction ask
+Generated: 2026-07-10
+Based on: Live YouTube research (verified 2026-07-10)
 
 ---
 
-## Outreach Philosophy
-
-These DMs are **not** collaboration pitches. They're opinion requests. The psychology:
-1. Ask for their expert opinion (flattering, low-pressure)
-2. Let them discover the product's value on their own terms
-3. Transition to partnership only after they express genuine interest
-4. Never mention money, affiliate rates, or "partnership" in the first message
+## DM #1 — RAYNER TEO (Fit: 9/10)
+**Platform:** YouTube Community Tab / X DM (@Rayner_Teo)
+**Subject line (email):** Quick question about your "175 Books" video
 
 ---
 
-## DM 1: Meet Kevin (Kevin Paffrath)
+Hey Rayner,
 
-**Platform:** Email (business@meetkevin.com)
-**Subject line:** Quick opinion request — crowd intelligence for active traders
+Just watched your "175 Books On Trading" video — the part about how profitable traders think in probabilities really hit. You're one of the few creators who teaches the WHY, not just the setup.
 
-> Hey Kevin,
->
-> Watched your earnings season breakdown last week — your point about how retail traders consistently buy the rumor too late was spot on. That's actually why I'm reaching out.
->
-> We built something called CrowdWisdomTrading.com. It aggregates signals from 5,600+ professional traders across YouTube, Reddit, and X, then delivers a weekly crowd-consensus briefing. Think of it as "what does the collective brain of the trading internet think this week?"
->
-> Your audience actively trades and constantly asks "which analyst do I trust?" — this is designed to answer that by showing where the crowd agrees, not where one person points.
->
-> Would you be open to taking a look and giving us your honest take? No pitch, no strings — I genuinely want to know if someone at your level thinks the concept has legs.
->
-> Here's the link: CrowdWisdomTrading.com
->
-> — [Name]
+I'm curious about something: your audience learns systems and frameworks from you, but when it comes to sizing conviction on a specific trade, do you think a crowd consensus signal (what 5,600+ professional traders are actually positioning for) would complement what you teach?
 
-**Word count:** 148
+We built CrowdWisdomTrading — it aggregates real-time predictions from thousands of traders across platforms. Not a replacement for strategy, more like a "second opinion at scale."
 
----
+Would you be open to a 10-min call to give us your honest take? No pitch — genuinely want your feedback on whether this would help your community.
 
-## DM 2: Ricky Gutierrez
-
-**Platform:** Website form or email (via learnplanprofit.net)
-**Subject line:** Your students' #1 question — we might have an answer
-
-> Hey Ricky,
->
-> Been following your day trading setups series — especially the recent video on watchlist discipline. The way you teach students to filter setups is exactly the problem we're trying to solve at scale.
->
-> We built CrowdWisdomTrading.com — it aggregates signals from 5,600+ professional traders and shows where the crowd has high conviction. For your LPP students who are learning your system but still second-guess themselves, it could serve as a confidence layer — "my setup says buy, and 5,600 other traders agree."
->
-> Would you be curious enough to take 5 minutes and see what the crowd consensus looks like? I'd love your honest feedback as someone who teaches trading for a living.
->
-> CrowdWisdomTrading.com — first briefing is free.
->
-> — [Name]
-
-**Word count:** 131
-
----
-
-## DM 3: Trades By Tom
-
-**Platform:** Instagram DM (@tradesbytom)
-**Subject line:** (none — Instagram DM)
-
-> Tom — your SPY 0DTE breakdowns are the only ones I watch all the way through. The way you explain risk/reward on weeklies is genuinely underrated.
->
-> Quick question: your audience follows multiple signal sources, right? And they're always asking "which one do I trust this week?" We built something for exactly that problem.
->
-> CrowdWisdomTrading.com aggregates signals from 5,600+ traders and shows where the crowd has consensus. It's not another signal group — it's the average of all signal groups, weighted by track record.
->
-> Would you take 2 minutes to look at this week's briefing and tell me if you think it's useful for your audience? Just want your honest take.
->
-> CrowdWisdomTrading.com
-
-**Word count:** 118
-
----
-
-## DM 4: Andrei Jikh
-
-**Platform:** Email (business@andreijikh.com)
-**Subject line:** The "one briefing" approach to investing — would love your take
-
-> Hey Andrei,
->
-> Your video on simplifying the investing process really resonated — especially the part about how most people overcomplicate their research by following too many sources. That's literally the problem we're solving.
->
-> We built CrowdWisdomTrading.com. It tracks 5,600+ professional traders across YouTube, Reddit, and X, then delivers one weekly briefing with the crowd's consensus trade ideas. Your audience trusts you to simplify things — this is the simplification layer for "okay, I understand investing, but what do I actually buy this week?"
->
-> Would you be open to checking it out and giving us your honest opinion? No affiliate pitch, no partnership ask — I just think someone who cares about making investing accessible would find the concept interesting.
->
-> CrowdWisdomTrading.com
->
-> — [Name]
+— [Name]
 
 **Word count:** 137
 
 ---
 
-## DM 5: Stock Moe
-
-**Platform:** Email (via YouTube about page)
-**Subject line:** Your picks + 5,600 other picks = something interesting
-
-> Hey Moe,
->
-> Loved your recent video on dividend stocks for the current rate environment — the way you break down yield vs. total return is exactly what your audience needs.
->
-> I wanted to show you something that might complement what you do. CrowdWisdomTrading.com aggregates stock signals from 5,600+ professional traders and shows where the crowd has high conviction. Imagine being able to tell your audience: "I like this stock, and 5,600 other traders agree" — or even better — "I like this stock, but the crowd disagrees, here's why."
->
-> Would you take 5 minutes to see what the crowd consensus looks like this week? I'd genuinely love your feedback — you've been in this space long enough to know if this adds value.
->
-> CrowdWisdomTrading.com — first briefing is free.
->
-> — [Name]
-
-**Word count:** 136
+## DM #2 — RICKY GUTIERREZ (Fit: 8/10)
+**Platform:** Discord DM (discord.gg/kwVQtmu) or Instagram (@rickygutierrezz)
+**Subject line (email):** Your "Stock Market Falling? This is When You Strike" video got me thinking
 
 ---
 
-## Follow-Up Template (1 Week Later — No Response)
+Hey Ricky,
 
-**Platform:** Same channel as original message
+Your video on when to strike during market dips was solid — the way you walked through the RSI oversold setup with real examples is exactly why beginners trust you. No fluff, just execution.
 
-> Hey [Name] — just floating this back up in case it got buried. I know your inbox is probably insane.
->
-> The short version: CrowdWisdomTrading.com aggregates signals from 5,600+ traders into one weekly briefing. I'd love your honest take on whether the concept has value for your audience.
->
-> No reply needed if it's not your thing — just didn't want you to miss it if it got lost in the noise.
->
-> CrowdWisdomTrading.com
+I wanted to get your opinion on something. Your audience is learning to trade ETFs and blue chips, but a lot of them probably still feel uncertain about when to pull the trigger. What if they could see a real-time consensus of what 5,600+ professional traders are buying or selling?
 
-**Word count:** 67
+We built CrowdWisdomTrading — weekly briefings with crowd consensus signals, entry/stop/target levels. Think of it as a "second opinion from the crowd" for traders who don't want to trade alone.
 
----
+Would you be open to trying it free for a month and giving us your honest feedback? No strings — just want to know if it would actually help your community.
 
-## Positive Reply Template (Transitioning to Partnership Conversation)
+— [Name]
 
-**Platform:** Same channel as original message
-
-> That means a lot — thank you for taking the time!
->
-> Since you see the value, I'd love to explore what a deeper conversation could look like. A few options:
->
-> 1. **Free access for your audience** — I can set up a custom landing page so your followers get their first briefing free. No cost to them, no commitment to you.
-> 2. **Content collaboration** — If you'd want to do a video or post showing how you use CrowdWisdom in your own research, we could make it worth your time.
-> 3. **Affiliate/revenue share** — If your audience converts, you get a cut. Happy to discuss rates.
->
-> No pressure on any of these — just want to find what works for you. Would a quick 15-minute call make sense to explore?
->
-> — [Name]
-
-**Word count:** 121
+**Word count:** 143
 
 ---
 
-## Outreach Cadence
-
-| Day | Action |
-|-----|--------|
-| Day 1 | Send initial DM to all 5 influencers |
-| Day 7 | Send follow-up to non-responders |
-| Day 14 | Final follow-up (optional) — "Last touch, no worries if not" |
-| Day 21 | Move to "warm lead" list — engage with their content organically for 30 days before re-engaging |
+## DM #3 — THE TRADING CHANNEL / STEVEN HART (Fit: 8/10)
+**Platform:** YouTube About page business email / X DM
+**Subject line (email):** Your price action course + a crowd intelligence idea
 
 ---
 
-## Personalization Checklist (Before Sending)
+Hey Steven,
 
-For each DM, verify:
-- [ ] Referenced a SPECIFIC recent video or post (not generic praise)
-- [ ] Connected CrowdWisdom's value to THEIR audience's pain point
-- [ ] Asked for their OPINION, not a collaboration
-- [ ] Included the product link
-- [ ] Kept under 150 words
-- [ ] No mention of money, affiliate rates, or "partnership" in first message
-- [ ] Used their actual name (not "Hey creator" or "Hi there")
+Your "Ultimate Beginners Guide To Price Action" video (415K views — congrats) is one of the best structured trading tutorials on YouTube. The way you build from candlesticks to market structure to strategy is exactly how people actually learn.
+
+I have a question for your community: once someone learns a solid price action framework, do you think they'd benefit from seeing what thousands of other traders are actually doing with those setups in real time?
+
+We built CrowdWisdomTrading — it aggregates predictions from 5,600+ professional traders into weekly consensus signals. It's not a strategy replacement — it's the "crowd validation" layer on top of what creators like you already teach.
+
+Would you be open to a quick 10-min call? I'd love your honest take on whether this adds value for beginners learning to trade.
+
+— [Name]
+
+**Word count:** 140
 
 ---
 
-*Outreach drafts completed 2026-07-09 by Influencer Outreach Agent.*
+## DM #4 — ZIPTRADER / CHARLIE (Fit: 8/10)
+**Platform:** YouTube About page email / X DM
+**Subject line (email):** "5 Stocks To BUY HEAVY For July" — quick question
+
+---
+
+Hey Charlie,
+
+Your "5 Stocks To BUY HEAVY For July" video was great — the way you break down sector rotation and give actual conviction picks is why your community is so engaged. 87K views in days speaks for itself.
+
+I wanted to ask your opinion on something. You give your audience YOUR best ideas. What if they could also see a real-time consensus of what 5,600+ professional traders are conviction-buying? Not to replace your analysis — but as a "crowd agrees with me" confirmation signal.
+
+We built CrowdWisdomTrading exactly for this. Weekly briefings with high-conviction trade ideas from thousands of traders, with entry/stop/target levels for Pro members.
+
+Would you be open to trying it free for a month? I'd genuinely love your feedback — and if it's useful, maybe your audience would too.
+
+— [Name]
+
+**Word count:** 139
+
+---
+
+## DM #5 — PATRICK WIELAND (Fit: 7/10)
+**Platform:** Discord / Instagram DM
+**Subject line (email):** Your "Don't Quit Your Job to Daytrade" video — honest question
+
+---
+
+Hey Patrick,
+
+Your "Don't Quit Your Job to Daytrade" video was real talk — especially the part about not romanticizing the lifestyle before you have consistent results. Respect for keeping it 100 with your audience.
+
+I wanted to ask you something honestly: a lot of your viewers are in that "learning phase" where they're trading small, building confidence. What if they could see a weekly consensus of what 5,600+ professional traders are positioning for — kind of like a "crowd second opinion" before they place a trade?
+
+We built CrowdWisdomTrading for exactly this. Not signals from one guru — aggregated predictions from thousands of traders, with transparent track records.
+
+Would you be open to checking it out free for a month? No partnership talk — just want your honest opinion on whether it would actually help your community level up.
+
+— [Name]
+
+**Word count:** 141
+
+---
+
+## FOLLOW-UP TEMPLATE (1 week after no response)
+
+**Subject line:** Following up — CrowdWisdomTrading + [Influencer Name]
+
+---
+
+Hey [Name],
+
+Just bumping this up in case it got buried — I know your inbox is probably wild.
+
+Quick recap: we aggregate trade predictions from 5,600+ professional traders into weekly consensus signals. I reached out because I think your audience would genuinely benefit from a "crowd second opinion" on their trades.
+
+Here's a 2-min demo video if that's easier than reading: [link]
+
+No pressure at all — if the timing isn't right, I'll check back in a few months. But if you're curious, the free trial is always there.
+
+— [Name]
+
+**Word count:** 94
+
+---
+
+## POSITIVE REPLY TEMPLATE (transition to partnership)
+
+**Subject line:** Re: CrowdWisdomTrading — let's do it!
+
+---
+
+[Name]! Really appreciate you taking the time — means a lot.
+
+Here's what I'm thinking for next steps:
+
+1. I'll set you up with a free Pro account (daily signals + entry/stop/target levels)
+2. You try it for 2-3 weeks with no obligation
+3. If you find it useful for your audience, we can discuss a paid partnership — I'm thinking a dedicated video or mention, with your unique affiliate link
+4. Typical structure: flat fee per video + ongoing rev share on subs generated
+
+I'll send over the login details and a one-pager with our track record and audience demographics. No rush — use it whenever you have time.
+
+Would a quick 15-min call this week work to walk through the dashboard? I want to make sure you get the most out of it before forming an opinion.
+
+— [Name]
+
+**Word count:** 131
+
+---
+
+## OUTREACH LOGISTICS
+
+### Best Channels by Influencer
+
+| Influencer          | Primary Channel         | Backup Channel           |
+|---------------------|-------------------------|--------------------------|
+| Rayner Teo          | X DM (@Rayner_Teo)     | YouTube About email      |
+| Ricky Gutierrez     | Discord DM             | Instagram DM             |
+| The Trading Channel | YouTube About email    | X DM                     |
+| ZipTrader           | YouTube About email    | X DM (@ZipTrader)        |
+| Patrick Wieland     | Discord DM             | Instagram DM             |
+
+### Timing Notes
+- Send DMs Tuesday-Thursday, 9-11 AM in their timezone
+- Avoid Mondays (inbox overload) and Fridays (weekend mode)
+- Follow up exactly 7 days later at the same time
+- If no reply after follow-up, wait 60 days before re-engaging
+
+### Personalization Checklist (per DM)
+- [x] References specific recent video by title
+- [x] Acknowledges their teaching style / personality
+- [x] Frames as "opinion request" not "please promote us"
+- [x] Connects CWT feature to THEIR audience's specific pain point
+- [x] Specific low-friction ask (free trial, 10-min call)
+- [x] Under 150 words

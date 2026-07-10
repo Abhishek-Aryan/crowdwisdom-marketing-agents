@@ -1,239 +1,229 @@
-# 03 — Ad Scripts: CrowdWisdomTrading.com
-
-> **Date:** 2026-07-09
-> **Status:** Complete
-> **Owner:** Ad Script Writer Agent
-> **Product:** CrowdWisdomTrading.com — AI newsletter aggregating signals from 5,600+ professional traders
-> **Sources:** 02_Pain_Point_Analysis.md, 07_YouTube_Research.md
-> **Platform:** Instagram Reels / Facebook Video (30–60 sec)
+# CrowdWisdomTrading — Video Ad Scripts
+*Generated: July 10, 2026*
+*Frameworks: PAS, AIDA, Hook-Story-Offer*
 
 ---
 
-## Script 1 — "The Pain Opener"
-
-**Target:** Overwhelmed retail trader who follows 20 YouTube channels and still loses
+## SCRIPT 1: "The Pain Opener" (30 seconds)
 **Framework:** Problem → Agitate → Solution → CTA
-**Tone:** Empathetic, conversational, peer-to-peer
-**Read time:** ~30 seconds (78 words)
+**Target:** Overwhelmed retail trader who follows 20 channels and still loses
+**Platform:** YouTube Pre-Roll, Instagram Reels, TikTok
+**Word Count:** ~80 words | Read Time: 30 seconds
 
 ---
 
 [HOOK]
-(Open on: person at desk, multiple browser tabs open — YouTube, Reddit, Discord, X. Camera slowly zooms in on their face looking overwhelmed.)
+(Quick-cut montage: 15 YouTube tabs open, Discord notifications piling up, Twitter feed scrolling, phone buzzing)
 
-**"You follow twenty trading channels. You're in four Discord servers. You scroll Reddit every night."**
-
-[ON-SCREEN TEXT: 20 channels. 4 servers. 0 confidence.]
+"You follow twenty trading channels."
 
 [PROBLEM]
-(B-roll: phone notifications piling up, conflicting screenshots of "BUY THIS" and "SELL THAT")
+(Screen shows conflicting alerts: "BUY NVDA" / "SELL NVDA" / "NVDA IS A TRAP")
 
-**"And you still don't know who to trust when it's time to actually place the trade."**
+"And today they told you twenty different things."
 
 [AGITATE]
-(Quick cuts: person staring at screen, checking phone at dinner, lying in bed scrolling)
+(Zoom into trader's face — exhausted, rubbing eyes, red candle on screen behind him)
 
-**"Because every guru sounds confident. Half of them are wrong. And you're the one paying for it."**
-
-[ON-SCREEN TEXT: Every guru sounds sure. Not all of them are.]
+"Three hours of research. Conflicting signals. You pull the trigger anyway — and lose. Again."
 
 [SOLUTION]
-(Shift in tone — calm, clean graphics. CrowdWisdom logo appears.)
+(Clean, minimal dashboard — one clear briefing card with consensus data)
 
-**"What if you didn't have to choose? CrowdWisdom tracks 5,600 professional traders — and shows you where they agree."**
-
-[ON-SCREEN TEXT: 5,600 traders. One consensus.]
+"CrowdWisdom distills 5,600 professional traders into one weekly signal. The crowd already did the research."
 
 [CTA]
-(Person closes laptop, leans back, smiles.)
+(Logo + URL + finger tapping "Get Started")
 
-**"Stop following voices. Start following the crowd. Link in bio."**
-
-[ON-SCREEN TEXT: CrowdWisdomTrading.com — Try free]
+"Stop guessing. Start consensus trading. Free sample briefing at CrowdWisdomTrading.com."
 
 ---
 
-**Word count:** 78
-**Read time:** ~28 seconds
-**Emotional arc:** Overwhelm → Recognition → Relief → Action
-**Hook type:** Pain Opener (Pattern 9 — Consolidation Promise)
+**B-roll notes:**
+- Open: fast, chaotic cuts (0.5s each) — screens, notifications, tabs
+- Middle: slow, heavy — single trader at desk, defeated posture
+- End: clean, calm — white space, single dashboard, one clear number
+- Color shift: warm/chaotic (problem) → cool/clean (solution)
+
+**Music:** Tense, pulsing beat → resolves to clean, confident tone at SOLUTION
 
 ---
 
-## Script 2 — "Social Proof"
-
-**Target:** Skeptical trader who's been burned by gurus and signal groups
-**Framework:** Disruptive Hook → Credibility Proof → Mechanism Explanation → Risk-Free Offer → CTA
-**Tone:** Confident, evidence-based, slightly contrarian
-**Read time:** ~45 seconds (118 words)
+## SCRIPT 2: "Social Proof" (45 seconds)
+**Framework:** Hook → Proof → Mechanism → Offer → CTA
+**Target:** Skeptical trader burned by gurus
+**Platform:** YouTube In-Stream, Facebook Feed, Instagram Stories
+**Word Count:** ~125 words | Read Time: 45 seconds
 
 ---
 
 [HOOK]
-(Open on: black screen. White text types out: "Last month, 5,600 traders converged on the same 3 stocks." Beat. Then: "Were they right?")
+(Black screen. White text types out: "I paid $2,000 for a trading course.")
 
-**"Last month, 5,600 professional traders converged on the same three stocks."**
+(Dramatic pause)
 
-[ON-SCREEN TEXT: 5,600 traders. Same 3 stocks.]
-
-[CREDIBILITY]
-(Show a simplified data visualization — dots converging on a point. Then real-looking performance numbers.)
-
-**"These aren't anonymous Discord usernames. They're YouTube creators with 50 million combined followers. Reddit analysts with public track records. X traders who post their positions in real time."**
-
-[ON-SCREEN TEXT: 50M+ followers. Public track records.]
-
-[MECHANISM]
-(Clean animated graphic: data streams from YouTube, Reddit, X flowing into a central hub, outputting a single "consensus signal.")
-
-**"CrowdWisdom aggregates every signal, weighs them by track record, and delivers one weekly briefing with the highest-conviction trade ideas. Not one person's opinion. The crowd's consensus."**
-
-[ON-SCREEN TEXT: Not one opinion. The crowd's consensus.]
+"It was wrong."
 
 [PROOF]
-(Split screen: left side shows a person watching 12 YouTube tabs; right side shows one clean email briefing.)
+(Montage: Motley Fool logo, Seeking Alpha homepage, Discord chat chaos)
 
-**"One subscriber told us he used to spend three hours every night researching. Now he reads one email on Monday morning. Same quality. A hundred hours back."**
+"Motley Fool gives you two picks a month from one team. Seeking Alpha gives you five thousand contradictory articles. Discord groups give you one guru and a prayer."
 
-[ON-SCREEN TEXT: 100+ hours saved per week.]
+(Cut to: CrowdWisdom data visualization — thousands of data points converging)
 
-[RISK-FREE]
-(Direct to camera, confident.)
+"We tracked 5,600 professional traders across YouTube, Reddit, X, and trading communities. Fifty million combined followers. One consensus."
 
-**"Basic plan. Weekly briefings. Cancel anytime. If the crowd consensus doesn't beat your current process in 30 days — you didn't need us anyway."**
+[Mechanism]
+(Animated graphic: individual signals flowing in → aggregation engine → single clean briefing)
+
+"Our AI finds where the crowd agrees. Not one opinion — thousands, distilled into a single weekly signal with entry, stop, and target levels."
+
+[Offer]
+(Split screen: left side shows chaos of 20 tabs, right side shows one CrowdWisdom briefing)
+
+"Stop paying for one person's guess. Get the consensus of thousands. Free sample briefing this week."
 
 [CTA]
-(CrowdWisdom logo + URL)
+(Logo animation + URL)
 
-**"Stop trusting one voice. Start trusting 5,600. CrowdWisdomTrading.com."**
-
-[ON-SCREEN TEXT: CrowdWisdomTrading.com — Your first briefing is free]
+"CrowdWisdomTrading.com. Your first briefing is on us."
 
 ---
 
-**Word count:** 118
-**Read time:** ~44 seconds
-**Emotional arc:** Curiosity → Credibility → Understanding → Desire → Action
-**Hook type:** Social Proof / Crowd Convergence (Pattern 2 — The Secret They Don't Want You to Know)
+**B-roll notes:**
+- Hook: stark black/white, minimal, text-heavy — feels like a confession
+- Proof: rapid logos and screenshots, then shift to data-viz "convergence" animation
+- Mechanism: clean motion graphics showing signal aggregation
+- Offer: side-by-side visual contrast (chaos vs. clarity)
+- End: confident, spacious, logo holds for 3 seconds
+
+**Music:** Suspenseful piano → builds with data viz → resolves to confident, clean beat
 
 ---
 
-## Script 3 — "Pattern Interrupt"
-
+## SCRIPT 3: "Pattern Interrupt" (30 seconds)
+**Framework:** Visual Hook → Insight → Bridge → CTA
 **Target:** Active trader scrolling Instagram Reels
-**Framework:** Visual Hook → Counterintuitive Insight → Bridge → CTA
-**Tone:** Punchy, fast, surprising
-**Read time:** ~30 seconds (72 words)
+**Platform:** Instagram Reels, TikTok, YouTube Shorts
+**Word Count:** ~75 words | Read Time: 30 seconds
 
 ---
 
 [HOOK]
-(Open on: EXTREME CLOSE-UP of a hand slamming a laptop shut. Sound effect: THUD. Cut to black.)
+(Trader staring at phone. Screen shows a green P&L: +$3,400. He smiles.)
 
-[ON-SCREEN TEXT: STOP. WATCHING. CHARTS.]
+(Record scratch. Screen glitches. The P&L flips to red: -$1,200.)
 
-**"Stop watching charts."**
+"Sound familiar?"
 
-[COUNTERINTUITIVE]
-(Fast cuts: candlestick patterns, TradingView screens, YouTube thumbnails of guys pointing at graphs.)
+[INSIGHT]
+(Fast cuts: 10 different trading YouTubers saying contradictory things, split-screen)
 
-**"The best traders in the world don't stare at screens all day. They have systems. They check a signal. They take the trade. They walk away."**
+"Every guru is one voice. One bad call and you're done. But what if you didn't follow one trader — what if you followed the consensus of 5,600?"
 
-[ON-SCREEN TEXT: Systems > Screens]
+[Bridge]
+(Phone screen transforms: chaos of notifications becomes one clean CrowdWisdom briefing card)
 
-[BRIDGE]
-(Clean, minimal graphics. CrowdWisdom interface mockup.)
-
-**"CrowdWisdom gives you the system. 5,600 traders feed it every week. You get the consensus on Monday. That's it."**
-
-[ON-SCREEN TEXT: 5,600 traders. One email. Monday.]
+"CrowdWisdomTrading.com aggregates thousands of traders into one signal. The crowd already knows."
 
 [CTA]
-(Quick zoom on CrowdWisdom logo.)
+(Thumb taps "Get Free Briefing" button)
 
-**"Link in bio. First briefing's free."**
-
-[ON-SCREEN TEXT: CrowdWisdomTrading.com]
+"Link in bio. Your first briefing is free."
 
 ---
 
-**Word count:** 72
-**Read time:** ~26 seconds
-**Emotional arc:** Disruption → Reframe → Simplicity → Action
-**Hook type:** Pattern Interrupt (Pattern 10 — Minimal Time Commitment)
+**B-roll notes:**
+- Hook: vertical format, phone-first framing. Green-to-red P&L is the emotional gut punch.
+- Insight: rapid-fire split screens of talking heads — visual overload that mirrors the pain.
+- Bridge: magical transformation — phone screen "cleans up" from chaos to one card.
+- End: native-feeling CTA — looks like organic content, not an ad.
+
+**Music:** Trending audio style — starts with a recognizable "fail" sound effect, transitions to a confident lo-fi beat.
+
+**Design note:** This script is designed to feel like organic Reels content, NOT a polished ad. The record scratch and glitch effects should feel native to the platform. Shot on phone, not cinema camera.
 
 ---
 
-## Script Variations Swipe File
+## 10 ALTERNATIVE HOOKS FOR A/B TESTING
 
-10 alternative hooks to test across all three scripts. Mix and match with any script body.
+### Category: Fear / Pain
 
-### Hook 1: The Crowd Convergence
-> "5,600 traders just agreed on one stock. Here's what it is."
->
-> *(Opens with a data visualization of dots converging. Curiosity gap — they have to watch to find out.)*
+**Hook 1 — "The Shelf of Failures"**
+"I spent $3,200 on trading courses last year. My account is down $8,000."
+*Pulls from the Deborah Rustad "itemized failure" pattern. Dollar specificity = believability.*
 
-### Hook 2: The Time Arbitrage
-> "You spent three hours researching last night. CrowdWisdom subscribers spent five minutes."
->
-> *(Split screen: person scrolling endlessly vs. person reading one email. Direct pain point.)*
+**Hook 2 — "The Notification Avalanche"**
+(Phone screen: 47 unread trading notifications)
+"Forty-seven alerts today. Not one of them made you money."
+*Visual-first hook. Works on mute — critical for Reels/TikTok.*
 
-### Hook 3: The Anti-Guru
-> "What if you never had to trust a single trading influencer again?"
->
-> *(Direct challenge to the guru model. Works on burned prospects who've followed bad calls.)*
+### Category: Curiosity / Pattern Interrupt
 
-### Hook 4: The Number Punch
-> "100 hours. That's how much research CrowdWisdom does for you every single week."
->
-> *(Opens with the number on screen, no context. Forces the viewer to stay for the explanation.)*
+**Hook 3 — "The Unanimous Trade"**
+"5,600 traders. One ticker. 94% agree. Here's what they're buying."
+*Specificity of the number creates credibility. The gap (which ticker?) creates curiosity.*
 
-### Hook 5: The Contrarian Truth
-> "Your favorite trading YouTuber is wrong about half the time. So is every other one. That's why we track all 5,600 of them."
->
-> *(Brutal honesty hook — names the elephant in the room. Disarming because it's true.)*
+**Hook 4 — "The Wrong Screen"**
+(Shows a Bloomberg terminal — then zooms out to reveal it's a $29/month website)
+"This looks like a Bloomberg terminal. It costs less than Netflix."
+*Aspiration + price anchor. Institutional feel at retail price.*
 
-### Hook 6: The Monday Morning
-> "Every Monday at 8 AM, one email lands in your inbox. By 8:05, you know what 5,600 traders are buying this week."
->
-> *(Concrete, specific, paints a picture of the customer's new routine.)*
+### Category: Identity / Status
 
-### Hook 7: The Betrayal Recovery
-> "You've been burned by signal groups. By bots. By gurus who disappeared after their call went south. We get it. That's why CrowdWisdom isn't one voice — it's 5,600."
->
-> *(Acknowledges past failures directly. Earns trust by naming the reader's history.)*
+**Hook 5 — "The Inside Room"**
+"The traders who consistently win don't watch more YouTube. They watch fewer, smarter signals."
+*Creates an in-group/out-group dynamic. Viewer wants to be in the "inside room."*
 
-### Hook 8: The Data Gap
-> "Wall Street has Bloomberg. You have... YouTube comments? There's a middle ground."
->
-> *(Positions CrowdWisdom as the retail trader's Bloomberg terminal — professional-grade data, consumer-grade price.)*
+**Hook 6 — "What Hedge Funds Know"**
+"Hedge funds don't follow one analyst. They aggregate thousands of data points. Now you can too."
+*Aspiration angle from the marketing strategy — institutional-grade framing.*
 
-### Hook 9: The Simple Math
-> "One expert is a guess. 5,600 experts is a signal. CrowdWisdom does the math for you."
->
-> *(Distills the entire value prop into two sentences. Works as a text overlay or voiceover.)*
+### Category: Contrarian / Myth-Busting
 
-### Hook 10: The Fear Flip
-> "While you were sleeping last night, 5,600 traders were scanning the market. Here's what they found."
->
-> *(FOMO + exclusivity. The "while you were sleeping" framing implies the crowd never stops working.)*
+**Hook 7 — "The Guru Problem"**
+"Every trading guru on YouTube has one thing in common: they're guessing."
+*Controversial — triggers agreement from burned viewers, curiosity from guru followers.*
 
----
+**Hook 8 — "You're Researching Wrong"**
+(Trader surrounded by screens, notes, charts)
+"You spend ten hours a week researching trades. Professionals spend ten minutes reading a consensus report."
+*Reframes the viewer's effort as waste, not virtue. Painful but motivating.*
 
-## Production Notes
+### Category: FOMO / Specificity
 
-**For all scripts:**
-- Music: low-key, building tension in Problem/Agitate sections, resolving to calm in Solution/CTA
-- Pacing: fast cuts during pain sections (0.5–1 sec per shot), slower during solution (2–3 sec)
-- Color grading: cold/blue tones for pain, warm/golden for solution
-- On-screen text: bold sans-serif, high contrast, appears with a subtle pop animation
-- CTA button: "Try Free" or "Get Your First Briefing" — never "Subscribe" or "Buy"
+**Hook 9 — "Last Week's Winner"**
+"Last week's top crowd pick: up 11.3%. Were you in?"
+*Pulls directly from the marketing strategy's FOMO angle. Past result = proof.*
 
-**A/B testing priority:**
-1. Test Hook 1 (Pain Opener) vs. Hook 9 (Simple Math) — same body, different opening
-2. Test Script 1 (30 sec) vs. Script 2 (45 sec) — does more proof beat more empathy?
-3. Test "Link in bio" vs. direct URL on screen — measure click-through difference
+**Hook 10 — "The Signal You Missed"**
+"Two days ago, 4,200 traders bought the same stock. You didn't even know about it."
+*Creates urgency through specificity. The number "4,200" feels real, not hype.*
 
 ---
 
-*Scripts completed 2026-07-09 by Ad Script Writer Agent.*
+## A/B TESTING MATRIX
+
+| Test | Hook A | Hook B | Variable |
+|------|--------|--------|----------|
+| 1 | Hook 1 ($3,200 pain) | Hook 6 (hedge fund aspiration) | Fear vs. Status |
+| 2 | Hook 3 (5,600 traders) | Hook 7 (guru problem) | Social proof vs. Contrarian |
+| 3 | Hook 2 (47 notifications) | Hook 4 (Bloomberg terminal) | Pain visual vs. Aspiration visual |
+| 4 | Hook 9 (last week's winner) | Hook 10 (signal you missed) | FOMO framing: past vs. present |
+| 5 | Hook 5 (inside room) | Hook 8 (researching wrong) | Identity vs. Myth-bust |
+
+**Testing protocol:** Run each pair at $50/day for 3 days. Measure: thumb-stop rate (3-sec view), view-through rate, CTR. Winner advances to Script-level production.
+
+---
+
+## PRODUCTION NOTES
+
+**Voiceover talent:** Male, 28-38, confident but not "announcer." Think: smart friend who trades, not radio DJ. Slight vocal fry is fine — authenticity over polish.
+
+**Pacing:** Scripts 1 and 3 are 30 seconds — every word must earn its place. Script 2 is 45 seconds — slightly slower, more room for proof.
+
+**Subtitles:** Mandatory on all platforms. 80%+ of Reels/TikTok watched on mute. Use bold, high-contrast captions with keyword highlighting.
+
+**Music licensing:** Use royalty-free tracks from Epidemic Sound or Artlist. Avoid anything that sounds like "epic ad music" — the audience is 25-44 and allergic to hard sells.
+
+**End card:** All scripts end on the logo + URL. Hold for minimum 3 seconds. Add a subtle animation (pulse or glow) to prevent static-frame skip.
