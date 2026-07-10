@@ -23,7 +23,7 @@ import datetime
 
 # Import project modules
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import MODEL, OBSIDIAN_VAULT, OUTPUT_DIR, load_product_context
+from config import MODEL, OBSIDIAN_VAULT, OUTPUT_DIR, load_product_context, APIFY_ACTOR_ID
 from kanban_manager import KanbanManager
 from agent_loop import (
     AgentLoop, create_marketing_agent, create_ads_scraper_agent,
@@ -31,6 +31,7 @@ from agent_loop import (
     create_influencer_agent, create_email_agent,
 )
 from apify_scraper import scrape_meta_ads, select_top_ads, save_ads
+from influencer_scraper import scrape_youtube_influencers, save_influencer_data
 
 
 def save_to_obsidian(filename: str, content: str) -> str:
@@ -177,16 +178,38 @@ def stage_3_influencer_outreach(km: KanbanManager, task_id: str) -> str:
 
     km.claim_task(task_id)
 
+    # Step 0: Real scraping via Apify
+    print("  [Stage 3] Scraping real influencers via Apify...")
+    raw_influencers = scrape_youtube_influencers(
+        ["stock trading signals youtube", "day trading strategy youtube", "options trading alerts"],
+        min_subs=200000,
+    )
+    save_influencer_data(raw_influencers)
+
+    # Format scraped data for agent context
+    scraped_context = json.dumps([
+        {
+            "name": ch.get("channelName", "Unknown"),
+            "url": ch.get("channelUrl", ""),
+            "subscribers": ch.get("_verified_subscribers", 0),
+            "description": ch.get("description", "")[:200],
+            "source": ch.get("_source", ""),
+        }
+        for ch in raw_influencers[:15]
+    ], indent=2)
+
     agent = create_influencer_agent()
 
-    # Research
+    # Research with real scraped data
     research = agent.run(
-        goal="""Find the top 10 retail trading influencers with 200K+ followers.
-Focus on: stock trading, options, forex, day trading.
+        goal=f"""Based on this REAL scraped data from Apify (verified 200K+ subscriber channels):
 
-For each: name, handle, platform, followers, content style, audience level, contact info, fit score.
+{scraped_context}
 
-Format as ranked table + detailed profiles.""",
+Enrich each profile with: content style, audience level, fit score for CrowdWisdomTrading, estimated engagement rate, contact approach.
+Then add any additional well-known trading influencers you know of to reach 10 total.
+
+Format as ranked table + detailed profiles. Mark data source: [SCRAPED] or [LLM-ADDED] for each entry.""",
         save_as="04_Influencer_Research.md",
     )
 
@@ -203,7 +226,7 @@ For each DM:
 Also write follow-up template and positive-reply template.
 
 Research:
-{research[:1000]}""",
+{research[:4000]}""",
         save_as="05_Influencer_Outreach.md",
     )
 

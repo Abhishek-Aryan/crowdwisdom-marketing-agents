@@ -136,16 +136,25 @@ class AgentLoop:
             if on_progress:
                 on_progress(self.name, iteration, "complete")
 
-            # Check if result is good enough (simple heuristic)
-            if len(result) > 200:
+            # Quality check: must be substantial AND contain markdown structure
+            has_length = len(result) > 500
+            has_structure = any(marker in result for marker in ["##", "**", "- ", "1.", "\n\n"])
+            is_quality = has_length and has_structure
+
+            if is_quality:
                 best_result = result
-                print(f"  ✓ Result accepted (iteration {iteration})")
+                print(f"  ✓ Result accepted (iteration {iteration}, {len(result)} chars)")
                 break
             else:
-                # Refine the goal for next iteration
-                current_goal = f"{goal}\n\nYour previous response was too short ({len(result)} chars). Please provide a more detailed response."
+                reason = []
+                if not has_length:
+                    reason.append(f"too short ({len(result)} chars, need 500+)")
+                if not has_structure:
+                    reason.append("no markdown structure (##, **, lists)")
+                feedback = ", ".join(reason)
+                current_goal = f"{goal}\n\nYour previous response needs improvement: {feedback}. Please provide a more detailed, well-structured Markdown response with headers (##), bullet points, and specific actionable content."
                 best_result = result
-                print(f"  → Refining (response too short)")
+                print(f"  → Refining: {feedback}")
 
         # Save to Obsidian vault if filename provided
         if save_as:

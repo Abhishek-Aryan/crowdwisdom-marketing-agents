@@ -21,7 +21,7 @@ OBSIDIAN_VAULT = os.environ.get(
 )
 
 # ─── MODEL ───────────────────────────────────────────────────────────────────
-MODEL = os.environ.get("HERMES_MODEL", "mimo-v2.5-pro")
+MODEL = os.environ.get("HERMES_MODEL", "openai/gpt-4o")  # Default to OpenRouter-compatible model
 
 # ─── APIFY ───────────────────────────────────────────────────────────────────
 APIFY_TOKEN = os.environ.get("APIFY_TOKEN", os.environ.get("APIFY_API_TOKEN", ""))

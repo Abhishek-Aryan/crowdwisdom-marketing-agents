@@ -10,6 +10,7 @@ import os
 import sys
 import json
 import time
+import datetime
 import urllib.request
 import urllib.parse
 from typing import List, Dict, Optional
@@ -134,10 +135,26 @@ def select_top_ads(ads: List[Dict], top_n: int = 10) -> List[Dict]:
 
         return score
 
+    # Filter to last 30 days
+    cutoff = datetime.datetime.now() - datetime.timedelta(days=30)
+    filtered_ads = []
+    for ad in ads:
+        start_raw = ad.get("start_date", ad.get("startDate", ""))
+        if start_raw:
+            try:
+                start_dt = datetime.datetime.strptime(str(start_raw)[:10], "%Y-%m-%d")
+                if start_dt >= cutoff:
+                    filtered_ads.append(ad)
+            except ValueError:
+                filtered_ads.append(ad)  # include if date unparseable
+        else:
+            filtered_ads.append(ad)  # include if no date field
+    ads = filtered_ads if filtered_ads else ads  # fallback to all if none pass
+
     # Deduplicate by brand/page
     seen = {}
     for ad in ads:
-        brand = ad.get("pageName", ad.get("brand", "unknown"))
+        brand = ad.get("advertiser_name", ad.get("pageName", ad.get("brand", "unknown")))
         if brand not in seen or score_ad(ad) > score_ad(seen[brand]):
             seen[brand] = ad
 
