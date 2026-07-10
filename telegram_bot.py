@@ -198,7 +198,7 @@ async def kanban_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         import subprocess
         result = subprocess.run(
-            ["hermes", "kanban", "list"],
+            ["hermes", "kanban", "--board", "crowdwisdom-marketing", "list"],
             capture_output=True, text=True, timeout=15,
             encoding="utf-8", errors="replace",
         )
