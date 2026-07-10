@@ -4,6 +4,15 @@ CrowdWisdomTrading Marketing Agent — Configuration
 import os
 import sys
 
+# Load .env file if present
+try:
+    from dotenv import load_dotenv
+    _env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(_env_path):
+        load_dotenv(_env_path)
+except ImportError:
+    pass
+
 # ─── PATHS ───────────────────────────────────────────────────────────────────
 # Add Hermes source to path for AIAgent import
 HERMES_HOME = os.environ.get("HERMES_HOME", os.path.expanduser("~/.hermes"))
